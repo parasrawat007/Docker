@@ -11,7 +11,6 @@ COPY . /app/
 EXPOSE 3000
 
 CMD ["node","server.js"]
-
 # 0  docker build .
 # Build image from Dockerfile in current directory.
 
@@ -19,28 +18,28 @@ CMD ["node","server.js"]
 # Run container from image ID with port mapping.
 
 # 2  docker ps -a
-# List all containers (running + stopped).
-
-# 3  docker stop sad_swanson
-# Stop container created from previous run.
-
-# 4  docker images -a
-# List all local images including intermediate layers.
-
-# 5  docker build .
-# Build image again (untagged).
-
-# 6  docker run -p 3000:3000 --name NodeJsApp 6732693c77fbd9b6b2ae2c787e62735a4c4653611dc5c1dd6e92a917a2f59119
-# Run container from image ID and assign name NodeJsApp.
-
-# 7  docker ps -a
 # List all containers.
 
+# 3  docker stop sad_swanson
+# Stop container.
+
+# 4  docker images -a
+# List all images.
+
+# 5  docker build .
+# Build image again.
+
+# 6  docker run -p 3000:3000 --name NodeJsApp 6732693c77fbd9b6b2ae2c787e62735a4c4653611dc5c1dd6e92a917a2f59119
+# Run container with name.
+
+# 7  docker ps -a
+# List containers.
+
 # 8  docker stop NodeJsApp
-# Gracefully stop container.
+# Stop container.
 
 # 9  docker start -a NodeJsApp
-# Restart container and attach to output.
+# Start and attach container.
 
 # 10 docker stop NodeJsApp
 # Stop container again.
@@ -49,19 +48,19 @@ CMD ["node","server.js"]
 # Verify container state.
 
 # 12 docker rm NodeJsApp charming_nightingale
-# Remove stopped containers.
+# Remove containers.
 
 # 13 docker ps -a
-# Confirm containers removed.
+# Confirm removal.
 
 # 14 docker images -a
-# List all images.
+# List images.
 
 # 15 docker image prune -a
-# Remove all unused images.
+# Remove unused images.
 
 # 16 docker build -t nodejsapp:latest .
-# Build image and tag properly.
+# Build and tag image.
 
 # 17 docker run -p 3000:3000 -d --rm --name NodeJsApp nodejsapp:latest
 # Run container in detached mode with auto-removal.
@@ -73,8 +72,31 @@ CMD ["node","server.js"]
 # List images.
 
 # 20 docker stop NodeJsApp
-# Stop container.
-# It is auto-removed because --rm was used.
+# Stop container (auto-removed due to --rm).
 
 # 21 docker ps -a
-# Confirm container no longer exists.
+# Confirm container removal.
+
+# 22 docker tag nodejsapp:latest parasrawat007/node-hello-world:latest
+# Tag local image for Docker Hub (username/repo:tag).
+
+# 23 docker images
+# Verify tagged image.
+
+# 24 docker rmi parasrawat007/node-hello-world:latest
+# Remove tagged image.
+
+# 25 docker images -a
+# Verify image removal.
+
+# 26 docker tag nodejsapp:latest parasrawat007/node-hello-world:latest
+# Recreate tag.
+
+# 27 docker images -a
+# Confirm tag exists.
+
+# 28 docker login
+# Authenticate with Docker Hub.
+
+# 29 docker push parasrawat007/node-hello-world:latest
+# Push image to Docker Hub repository.

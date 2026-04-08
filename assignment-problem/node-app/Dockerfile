@@ -15,7 +15,7 @@ CMD ["node","server.js"]
 # Build image from Dockerfile in current directory.
 
 # 1  docker run -p 3000:3000 17438b1d0d9a4c9d6aa0a3b7e1f602de612836712c817adab2ceb4ae54f875ae
-# Run container from image ID with port mapping.
+# Run container from image ID.
 
 # 2  docker ps -a
 # List all containers.
@@ -48,7 +48,7 @@ CMD ["node","server.js"]
 # Verify container state.
 
 # 12 docker rm NodeJsApp charming_nightingale
-# Remove containers.
+# Remove stopped containers.
 
 # 13 docker ps -a
 # Confirm removal.
@@ -78,16 +78,16 @@ CMD ["node","server.js"]
 # Confirm container removal.
 
 # 22 docker tag nodejsapp:latest parasrawat007/node-hello-world:latest
-# Tag local image for Docker Hub (username/repo:tag).
+# Tag image for Docker Hub.
 
 # 23 docker images
-# Verify tagged image.
+# Verify tag.
 
 # 24 docker rmi parasrawat007/node-hello-world:latest
 # Remove tagged image.
 
 # 25 docker images -a
-# Verify image removal.
+# Verify removal.
 
 # 26 docker tag nodejsapp:latest parasrawat007/node-hello-world:latest
 # Recreate tag.
@@ -96,7 +96,34 @@ CMD ["node","server.js"]
 # Confirm tag exists.
 
 # 28 docker login
-# Authenticate with Docker Hub.
+# Authenticate to Docker Hub.
 
 # 29 docker push parasrawat007/node-hello-world:latest
-# Push image to Docker Hub repository.
+# Push image to Docker Hub.
+
+# 30 docker pull parasrawat007/node-hello-world:latest
+# Pull image from Docker Hub.
+
+# 31 docker run parasrawat007/node-hello-world:latest
+# Run container from pulled image.
+
+# 32 docker run -p 3000:3000 parasrawat007/node-hello-world:latest
+# Run container with port mapping.
+
+# 33 docker ps -a
+# List containers.
+
+# 34 docker stop frosty_germain
+# Stop container before removing.
+
+# 35 docker rm frosty_germain
+# Remove container.
+
+# 36 docker ps -a
+# Verify removal.
+
+# 37 docker stop trusting_gagarin
+# Stop another container.
+
+# 38 docker container prune
+# Remove all stopped containers.

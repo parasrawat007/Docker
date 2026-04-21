@@ -10,6 +10,8 @@ COPY . .
 
 EXPOSE 80
 
+VOLUME [ "/app/feedback" ]
+
 CMD [ "node","server.js" ]
 
 # 0  npm i
@@ -31,38 +33,95 @@ CMD [ "node","server.js" ]
 # --name → container name
 # --rm → auto-remove when stopped
 
-# 5  docker stop feedback-app
+# 5  docker logs feedback-app
+# View container logs.
+
+# 6  docker stop feedback-app
 # Stop container (auto-removed because of --rm).
 
-# 6  docker image prune -a
+# 7  docker image prune -a
 # Remove all unused images.
 
-# 7  docker images -a
+# 8  docker images -a
 # Verify remaining images.
 
-# 8  docker build -t feedback-node .
+# 9  docker build -t feedback-node .
 # Rebuild image.
 
-# 9  docker run -d -p 3000:80 --name feedback-app --rm feedback-node
-# Run container again (auto-remove enabled).
-
-# 10 docker stop feedback-app
-# Stop container (removed automatically).
-
-# 11 docker run -p 3000:80 --name feedback-app --rm feedback-node
+# 10 docker run -p 3000:80 --name feedback-app --rm feedback-node
 # Run container in foreground mode (no -d).
 
-# 12 docker stop feedback-app
+# 11 docker stop feedback-app
 # Stop container.
 
-# 13 docker run -d -p 3000:80 --name feedback-app feedback-node
+# 12 docker run -d -p 3000:80 --name feedback-app feedback-node
 # Run container WITHOUT --rm (persistent container).
 
-# 14 docker stop feedback-app
+# 13 docker stop feedback-app
 # Stop container (not deleted this time).
 
-# 15 docker start feedback-app
+# 14 docker start feedback-app
 # Restart existing stopped container.
 
-# 16 docker stop feedback-app
+# 15 docker stop feedback-app
 # Stop container again.
+
+# 16 docker images -a
+# List all images.
+
+# 17 docker image prune -a
+# Remove all unused images.
+
+# 18 docker build -t feedback-node:volumes .
+# Build image with volumes variant.
+
+# 19 docker run -d -p 3000:80 --name feedback-app --rm feedback-node:volumes
+# Run container.
+
+# 20 docker logs feedback-app
+# View logs.
+
+# 21 docker stop feedback-app
+# Stop container.
+
+# 22 docker image prune
+# Remove dangling images.
+
+# 23 docker build -t feedback-node:volumes .
+# Rebuild volumes image.
+
+# 24 docker run -d -p 3000:80 --name feedback-app --rm feedback-node:volumes
+# Run container.
+
+# 25 docker logs feedback-app
+# View logs.
+
+# 26 docker image prune
+# Cleanup dangling images.
+
+# 27 docker build -t feedback-node:volumes .
+# Rebuild again.
+
+# 28 docker run -d -p 3000:80 --name feedback-app --rm feedback-node:volumes
+# Run container.
+
+# 29 docker container prune
+# Remove all stopped containers.
+
+# 30 docker run -d -p 3000:80 --name feedback-app --rm feedback-node:volumes
+# Run container again.
+
+# 31 docker stop feedback-app
+# Stop container.
+
+# 32 docker ps
+# Show running containers.
+
+# 33 docker run -d -p 3000:80 --name feedback-app --rm feedback-node:volumes
+# Run container again.
+
+# 34 docker stop feedback-app
+# Stop container.
+
+# 35 docker run -d -p 3000:80 --name feedback-app --rm feedback-node:volumes
+# Run container again.
